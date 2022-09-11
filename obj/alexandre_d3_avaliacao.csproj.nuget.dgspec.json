@@ -1,0 +1,71 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/ale/Documentos/Codigos/CTED/alexandre_d3_avaliacao/alexandre_d3_avaliacao.csproj": {}
+  },
+  "projects": {
+    "/home/ale/Documentos/Codigos/CTED/alexandre_d3_avaliacao/alexandre_d3_avaliacao.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ale/Documentos/Codigos/CTED/alexandre_d3_avaliacao/alexandre_d3_avaliacao.csproj",
+        "projectName": "alexandre_d3_avaliacao",
+        "projectPath": "/home/ale/Documentos/Codigos/CTED/alexandre_d3_avaliacao/alexandre_d3_avaliacao.csproj",
+        "packagesPath": "/home/ale/.nuget/packages/",
+        "outputPath": "/home/ale/Documentos/Codigos/CTED/alexandre_d3_avaliacao/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ale/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "DotNetEnv": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.30, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

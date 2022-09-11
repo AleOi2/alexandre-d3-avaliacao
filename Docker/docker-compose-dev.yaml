@@ -1,0 +1,25 @@
+# docker-compose -f Docker/docker-compose-dev.yaml up -d 
+# docker-compose -f Docker/docker-compose-dev.yaml up -d --build
+# docker-compose -f Docker/docker-compose-dev.yaml down --volumes --rmi all (remove volumes and images)
+version: '3'
+services:
+  application:
+    container_name: aplication_container
+    build:
+      context: "../"
+    depends_on:
+      - mysql
+    restart: always
+  mysql:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    environment:
+      MYSQL_ROOT_PASSWORD: 'meuteste'
+      MYSQL_DATABASE: alexandre_d3_avaliacao
+    restart: always
+    tty: true
+    ports:
+      - 3030:3306
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./mysql-init-files:/docker-entrypoint-initdb.d
