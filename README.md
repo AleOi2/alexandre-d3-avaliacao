@@ -68,7 +68,7 @@ Caso queira é possível fazer o teste utilizando docker.
 
 Inicialmente é necessário instalar docker e docker-compose em sua máquina.
 
-Em seguida crie o arquivo .env qude deve ser algo do tipo:
+Em seguida crie o arquivo .env que deve ser algo do tipo:
 ```
 mysql_connection="server=mysql;port=3306;User Id=root;database=alexandre_d3_avaliacao;password=senha;"
 ```
@@ -89,7 +89,7 @@ Utilize o comando a seguir para levantar o container
  docker-compose -f Docker/docker-compose-dev.yaml up -d 
 ```
 
-Utilize o comando para refazer o build
+Utilize o comando a seguir para caso queira forçar o build
 ```
 docker-compose -f Docker/docker-compose-dev.yaml up -d --build
 ```
@@ -103,7 +103,7 @@ Quando rodar docker compose up (o primero dos 3 comandos), serão instalados tan
 
 A criação do banco de dados é manual. Assim, inicialmente terá que entrar no container do mysql e criar a tabela usuario.
 
-Acesse se dve conectar ao container mysql (verifique o nome do container antes utilizando o comando docker ps) com:
+Acesse o container mysql (verifique o nome do container antes utilizando o comando docker ps) com:
 ```
 docker exec -it docker_mysql_1 bash
 ```
@@ -145,7 +145,7 @@ Finalmente o sistema vai começar a funcionar.
 Ao invés de adicionar o usuário no começo do programa como se fosse um seed (Na função main deveria inserir a função de create or update by email), resolveu-se adicionar uma opção de adição de usuário de forma manual (opção 2).
 
 Caso realmente prefira adicionar como seed, o email foi feito para ser do tipo unique.
-Assim basta na função main descomentar a função Create no começo do programa (Program.cs).
+Assim, basta na função main descomentar a função Create no começo do programa (Program.cs).
 
 ```
 // User adminUser = new(){
