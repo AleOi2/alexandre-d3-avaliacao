@@ -24,21 +24,55 @@ namespace accessing_db.Repositories
             {
                 using (MySqlConnection con = new MySqlConnection(stringConexao))
                 {
-                // SQL Injection
-                // string queryInsert = $"INSERT INTO Users (id, email, senha, nome) VALUES ('{newUser.Id}', '{newUser.Email}', '{newUser.Senha}', {newUser.Nome})";
-                string queryInsert = "INSERT INTO usuario (email, senha, nome) VALUES (@email, @senha, @nome)";
-                string encryptedPass = Utils.Encrypt(newUser.Senha);
-                using (MySqlCommand cmd = new MySqlCommand(queryInsert, con))
+                    string querySelect = $"SELECT * FROM usuario where email = '{newUser.Email}'";
+                    using (MySqlCommand cmd = new MySqlCommand(querySelect, con))
                     {
-                        cmd.Parameters.AddWithValue("@email", newUser.Email);
-                        cmd.Parameters.AddWithValue("@senha", encryptedPass);
-                        cmd.Parameters.AddWithValue("@nome", newUser.Nome);
-
                         con.Open();
-                        cmd.ExecuteNonQuery();
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+                        if(rdr.Read())
+                        {
+                            // SQL Injection
+                            // string queryInsert = $"INSERT INTO Users (id, email, senha, nome) VALUES ('{newUser.Id}', '{newUser.Email}', '{newUser.Senha}', {newUser.Nome})";
+                            using (MySqlConnection con2 = new MySqlConnection(stringConexao))
+                            {
+                                string queryInsert = $"UPDATE usuario SET senha = @senha, nome = @nome where email = @email";
+                                string encryptedPass = Utils.Encrypt(newUser.Senha);
+                                using (MySqlCommand cmd2 = new MySqlCommand(queryInsert, con2)){
+                                    cmd2.Parameters.AddWithValue("@email", newUser.Email);
+                                    cmd2.Parameters.AddWithValue("@senha", encryptedPass);
+                                    cmd2.Parameters.AddWithValue("@nome", newUser.Nome);
+                                    con2.Open();
+                                    cmd2.ExecuteNonQuery();
+
+                                }
+                                Console.WriteLine("Usuário editado");
+                                return;
+                            }
+
+                        } else {
+                            // SQL Injection
+                            // string queryInsert = $"INSERT INTO Users (id, email, senha, nome) VALUES ('{newUser.Id}', '{newUser.Email}', '{newUser.Senha}', {newUser.Nome})";
+                            string queryInsert = "INSERT INTO usuario (email, senha, nome) VALUES (@email, @senha, @nome)";
+                            string encryptedPass = Utils.Encrypt(newUser.Senha);
+                            using (MySqlConnection con2 = new MySqlConnection(stringConexao)){
+                                using (MySqlCommand cmd2 = new MySqlCommand(queryInsert, con2))
+                                {
+                                    cmd2.Parameters.AddWithValue("@email", newUser.Email);
+                                    cmd2.Parameters.AddWithValue("@senha", encryptedPass);
+                                    cmd2.Parameters.AddWithValue("@nome", newUser.Nome);
+
+                                    con2.Open();
+                                    cmd2.ExecuteNonQuery();
+                                }
+
+                            }
+                            Console.WriteLine("Usuário adiconado");
+                            return;
+                        }
+                        // con.Close();
                     }
+
                 }
-                Console.WriteLine("Usuário adiconado");
             }
             catch (System.Exception)
             {

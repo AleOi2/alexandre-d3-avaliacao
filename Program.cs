@@ -14,6 +14,12 @@ namespace accessing_db
             DotNetEnv.Env.TraversePath().Load();
             Console.WriteLine();
             UserRepository _user = new();
+            // User adminUser = new(){
+            //     Email = "admin@gmail.com",
+            //     Senha = "admin123",
+            //     Nome = "Admin"
+            // };
+            // _user.Create(adminUser);
 
             bool encerrar = false; string option;
             string email; string senha;
@@ -23,7 +29,7 @@ namespace accessing_db
             {
                 Console.WriteLine("Escolha uma das opções abaixo:");
                 Console.WriteLine("1 - Acessar");
-                Console.WriteLine("2 - Adicionar Usuário");
+                Console.WriteLine("2 - Adicionar Usuário ou Editar Usuário");
                 Console.WriteLine("0 - Sair da aplicação");
                 option = Console.ReadLine();
 
