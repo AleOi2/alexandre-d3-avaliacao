@@ -122,7 +122,7 @@ Crie a tabela usuário com o seguinte comando:
 ```
 create table usuario(
   id int auto_increment,
-  email varchar(500),
+  email varchar(500) unique,
   senha varchar(500),
   nome varchar(500),
   primary key(id)
@@ -140,5 +140,8 @@ dotnet run
 
 Finalmente o sistema vai começar a funcionar.
 
-# Funcionamento
+# Adendo
+
+Ao invés de adicionar o usuário no começo do programa como se fosse um seed (Na função main deveria inserir a função de create or update by email), resolveu-se adicionar uma opção de adição de usuário de forma manual.
+
 
