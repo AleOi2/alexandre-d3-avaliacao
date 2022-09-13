@@ -142,6 +142,18 @@ Finalmente o sistema vai começar a funcionar.
 
 # Adendo
 
-Ao invés de adicionar o usuário no começo do programa como se fosse um seed (Na função main deveria inserir a função de create or update by email), resolveu-se adicionar uma opção de adição de usuário de forma manual.
+Ao invés de adicionar o usuário no começo do programa como se fosse um seed (Na função main deveria inserir a função de create or update by email), resolveu-se adicionar uma opção de adição de usuário de forma manual (opção 2).
 
+Caso realmente prefira adicionar como seed, o email foi feito para ser do tipo unique.
+Assim basta na função main descomentar a função Create no começo do programa (Program.cs).
+
+```
+// User adminUser = new(){
+//     Email = "admin@gmail.com",
+//     Senha = "admin123",
+//     Nome = "Admin"
+// };
+// _user.Create(adminUser);
+```
+Apesar do nome, a função create é uma função que faz create or update com base no email.
 
